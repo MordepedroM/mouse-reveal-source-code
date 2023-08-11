@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouse Reveal Source Code</title>
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+  }
+  #screenshot {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5; 
+    z-index: 2;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <img id="screenshot" src="path_to_your_screenshot_image.png" alt="Screenshot">
+  <!-- Your actual content goes here -->
+  <header>
+    <h1>Welcome to my page</h1>
+  </header>
+  <main>
+    <p>Move the mouse to see how its made!...</p>
+  </main>
+  <footer>
+    <p>Check my other projects at <a href="https://www.github.com/mordepedrom" target="_blank">Github</a></p>
+  </footer>
+  <script>
+    const screenshot = document.getElementById('screenshot');
+
+    document.addEventListener('mousemove', (e) => {
+      const yPosition = (e.clientY / window.innerHeight) * 100;
+      // Adjust the calculation based on your layout
+      screenshot.style.clipPath = `polygon(0 0, 100% 0, 100% ${yPosition}%, 0 ${yPosition}%)`;
+    });
+  </script>
+</body>
+</html>
